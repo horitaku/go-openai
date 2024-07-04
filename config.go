@@ -55,13 +55,13 @@ func DefaultConfig(authToken string) ClientConfig {
 	}
 }
 
-func DefaultAzureConfig(apiKey, baseURL string) ClientConfig {
+func DefaultAzureConfig(apiKey, baseURL, apiVersion string) ClientConfig {
 	return ClientConfig{
 		authToken:  apiKey,
 		BaseURL:    baseURL,
 		OrgID:      "",
 		APIType:    APITypeAzure,
-		APIVersion: "2023-05-15",
+		APIVersion: apiVersion,
 		AzureModelMapperFunc: func(model string) string {
 			return regexp.MustCompile(`[.:]`).ReplaceAllString(model, "")
 		},
